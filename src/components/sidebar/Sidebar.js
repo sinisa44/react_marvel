@@ -11,43 +11,28 @@ export default class Sidebar extends React.Component {
         super(props);
 
         this.state = {
-            characters: [],
             offset: 100,
             currentOffset:100,
-            loading:true
         }
     }
     
     async handlePageChange (event, data) {
-
-        this.setState({ loading: true });
-
         if( this.state.CurrentOffset === data ) {
             return;
         }
 
-        let newCharacters = await MarvelGet( '/characters', data);
+        this.props.handleChange( [], true )
 
-        this.setState(
-            { 
-                currentOffset: data,
-                characters: newCharacters,
-                loading:false
-            }
-        )   
+        const newCharacters = await MarvelGet( '/characters', data);
+
+        this.props.handleChange( newCharacters, false );
     }
 
     render() {
-        console.log(this.state.loading);
-        const { characters, loading } = this.state;
         return(   
             <div>
-                {
-                    loading ? <Spinner/> :
-                    <ListComponent characters={characters}/>
-                }
-                
-                <Paginate handlePageChange={this.handlePageChange.bind(this)}/>
+                <ListComponent characters={this.props.characters}/>
+                <Paginate handlePageChange={this.handlePageChange.bind(this)}/>             
             </div>
             )
     }
