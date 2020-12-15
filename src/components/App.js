@@ -9,6 +9,7 @@ import './App.scss'
 class App extends React.Component {
     state = {
         characters:[],
+        character:[],
         loading:true,
     }
     

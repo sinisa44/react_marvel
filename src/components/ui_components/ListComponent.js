@@ -6,14 +6,18 @@ const ListComponent = ( props ) => {
     const { characters } = props;
 
     const handleItemClick = (event, data) => {
-        console.log(data.item);
+        props.handleItemClick(data.item);
     }
     console.log(props);
     return(
         <List className='list'>
             { 
                 characters.map( character => {
-                return <List.Item key={character.id} onClick={handleItemClick} item={character.id}>
+                return <List.Item
+                            key={character.id} 
+                            onClick={handleItemClick}
+                            item={character.id}
+                        >
                             <List.Content>
                                 {character.name}
                             </List.Content>
