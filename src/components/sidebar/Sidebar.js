@@ -3,7 +3,7 @@ import './../../sass/Sidebar.scss';
 import Paginate from './../ui_components/Pagination';
 import { MarvelGet } from './../../API/Marvel';
 import ListComponent from './../ui_components/ListComponent'
-import Spinner from '../ui_components/Spinner';
+
 
 
 export default class Sidebar extends React.Component {
@@ -31,7 +31,10 @@ export default class Sidebar extends React.Component {
     render() {
         return(   
             <div>
-                <ListComponent characters={this.props.characters}/>
+                <ListComponent 
+                    characters={this.props.characters}
+                    handleItemClick={this.props.handleItemClick}
+                    />
                 <Paginate handlePageChange={this.handlePageChange.bind(this)}/>             
             </div>
             )

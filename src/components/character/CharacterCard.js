@@ -6,7 +6,7 @@ const CharacterCard = (props) => {
 
     return(
         <Card key={character.id}>
-            <Image src={`${character.thumbnail.path}/portrait_xlarge.jpg`} wrapped ui={false} />
+            <Image src={`${character.thumbnail.path}/standard_xlarge.jpg`} wrapped ui={false} />
             <Card.Content>
                 <Card.Header>{character.name}</Card.Header>
             </Card.Content>

@@ -19,8 +19,11 @@ class App extends React.Component {
         });        
     }
 
+    handleItemClick = ( data ) => {
+        console.log(`handle item click ${data}`);
+    }
+
     render() {
-        console.log(this.state)
         return(
             <Container fluid>
                 <Grid style={{padding:0, margin:0}}>
@@ -28,7 +31,11 @@ class App extends React.Component {
                         <Grid.Column color="red" width="3" className="sidebar">
                             {
                                 this.state.loading ? <Spinner /> :
-                                <Sidebar characters={this.state.characters} handleChange={this.handleChange.bind(this)}/>
+                                <Sidebar
+                                    characters={this.state.characters} 
+                                    handleChange={this.handleChange.bind(this)}
+                                    handleItemClick={this.handleItemClick}
+                                />
                             }
                         </Grid.Column>
                         <Grid.Column  width='13' className="main-content" color="black"> 
