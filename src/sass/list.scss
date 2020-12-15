@@ -1,0 +1,9 @@
+.list {
+  height: 85vh;
+  overflow-y: scroll;
+  cursor: pointer;
+
+  .item:active {
+    color: black;
+  }
+}
