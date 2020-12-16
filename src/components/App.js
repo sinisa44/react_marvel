@@ -6,12 +6,13 @@ import Sidebar from './sidebar/Sidebar';
 import './App.scss'
 
 class App extends React.Component {
+    //TODO promeni state 
+    //! izbaci objekte iz characters
     state = {
         characters:{
             characters:[],
             character:[]
         },
-        character:[],
         loading:true,
         activePage:null
     }
@@ -30,7 +31,8 @@ class App extends React.Component {
         marvelGet('/characters', ( characters ) => {
             this.setState({
                 characters:{
-                    characters: characters
+                    characters: characters,
+                    character:[]
                 },
                 loading:false
             })
@@ -40,10 +42,22 @@ class App extends React.Component {
     }
 
     handleItemClick = ( data ) => {
-        console.log(`handle item click ${data}`);
+        this.setState({loading:true})
+
+        marvelGet(`/characters/${data}`, ( character ) =>{
+            this.setState({
+                characters:{
+                    character:character
+                },
+                loading:false
+            })
+        })
+
+      
     }
 
     render() {
+        console.log(this.state.characters);
         return(
             <Container fluid>
                 <Grid style={{padding:0, margin:0}}>
