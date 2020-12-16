@@ -8,7 +8,7 @@ const ListComponent = ( props ) => {
     const handleItemClick = (event, data) => {
         props.handleItemClick(data.item);
     }
-    console.log(props);
+
     return(
         <List className='list'>
             { 

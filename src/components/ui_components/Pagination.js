@@ -1,13 +1,7 @@
 import React from 'react';
 import { Pagination } from 'semantic-ui-react';
 
-const Paginate = (props) => {
-
-
-    const handlePageChange = (event, data) => {
-        let offset = parseInt( `${data.activePage}00`)
-        props.handlePageChange(event, offset);
-    }
+const Paginate = props => {
 
     return(
         <Pagination
@@ -19,7 +13,7 @@ const Paginate = (props) => {
             siblingRange={1}
             totalPages={9}
             className='pagination'
-            onPageChange={handlePageChange}
+            onPageChange={(event, data) => props.handlePageChange(data.activePage)}
         />
     );
 }

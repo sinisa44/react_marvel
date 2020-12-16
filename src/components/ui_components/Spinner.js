@@ -3,9 +3,7 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 
 const Spinner = () => {
     return(
-        <Dimmer active>
-            <Loader size='big'/>
-        </Dimmer>
+        <Loader size='big' active/> 
     )
 }
 
