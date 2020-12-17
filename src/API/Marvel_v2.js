@@ -4,14 +4,13 @@ import md5 from 'md5';
 
 export const marvelGet = ( url, callback, offset) => {
     axios.get(`http://gateway.marvel.com:80/v1/public${url}${generateUrl()}&offset=${setOffset(offset)}&limit=100`)
-            .then( response => callback(response.data.data.results))
-           
+            .then( response => callback( response.data.data.results ) )
             .catch( err => console.log( err ) );
 }
 
 const setOffset = offset => {
     if( ! offset ) {
-        return `${Math.floor( Math.random() * 9 ) + 1}00`
+        return 100;
     }
 
     return offset;

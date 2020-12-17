@@ -3,18 +3,16 @@ import {marvelGet} from './../API/Marvel_v2';
 import { Container, Grid } from 'semantic-ui-react';
 import Character from './character/Character';
 import Sidebar from './sidebar/Sidebar';
+import HeroModal from './ui_components/Modal';
 import './App.scss'
 
 class App extends React.Component {
-    //TODO promeni state 
-    //! izbaci objekte iz characters
     state = {
-        characters:{
-            characters:[],
-            character:[]
-        },
+        characters:[],
+        character:[],
         loading:true,
-        activePage:null
+        activePage:null,
+        modalOpen:false
     }
     
     handleChange = ( activePage ) => {
@@ -30,10 +28,7 @@ class App extends React.Component {
 
         marvelGet('/characters', ( characters ) => {
             this.setState({
-                characters:{
-                    characters: characters,
-                    character:[]
-                },
+                characters,
                 loading:false
             })
         }, offset)
@@ -42,37 +37,42 @@ class App extends React.Component {
     }
 
     handleItemClick = ( data ) => {
-        this.setState({loading:true})
+        // this.setState({loading:true})
 
         marvelGet(`/characters/${data}`, ( character ) =>{
             this.setState({
-                characters:{
-                    character:character
-                },
-                loading:false
+                character,
+                loading:false,
+                modalOpen:true
             })
-        })
-
-      
+        }) 
     }
 
     render() {
-        console.log(this.state.characters);
         return(
             <Container fluid>
                 <Grid style={{padding:0, margin:0}}>
+                <HeroModal 
+                    modalOpen={this.state.modalOpen}
+                    handleClose={
+                        () => {
+                            this.setState({modalOpen:false})
+                        }
+                    }
+                    character={this.state.character}
+                />
                     <Grid.Row columns={2} >
                         <Grid.Column color="red" width="3" className="sidebar">
                                 <Sidebar
                                     loading = {this.state.loading}
-                                    characters={this.state.characters.characters} 
+                                    characters={this.state.characters} 
                                     handleChange={this.handleChange}
                                     handleItemClick={this.handleItemClick}
                                 />    
                         </Grid.Column>
                         <Grid.Column  width='13' className="main-content" color="black">
                             <Character 
-                                characters={this.state.characters.characters} 
+                                characters={this.state.characters} 
                                 loading={this.state.loading}
                             />
                         </Grid.Column>
@@ -86,10 +86,8 @@ class App extends React.Component {
         marvelGet('/characters',
         (characters) => {
             this.setState( {
-                    characters:{
-                        characters
-                    },
-                    loading:false
+                characters,
+                loading:false
             })
         })
     }
