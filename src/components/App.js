@@ -36,9 +36,8 @@ class App extends React.Component {
 
     }
 
-    handleItemClick = ( data ) => {
-        // this.setState({loading:true})
-
+    handleItemClick = data => {
+        console.log(data);
         marvelGet(`/characters/${data}`, ( character ) =>{
             this.setState({
                 character,
@@ -74,6 +73,7 @@ class App extends React.Component {
                             <Character 
                                 characters={this.state.characters} 
                                 loading={this.state.loading}
+                                handleItemClick={this.handleItemClick}
                             />
                         </Grid.Column>
                     </Grid.Row>

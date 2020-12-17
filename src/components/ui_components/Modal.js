@@ -10,13 +10,10 @@ class HeroModal extends React.Component {
     }
 
     render() {
-
         if( this.props.character.length === 0 ) {
             return null;
         }
         const character = this.props.character[0]
-
-        console.log(character);
         return(
             <Modal
                 style={{border:'1px solid red'}}
@@ -24,8 +21,7 @@ class HeroModal extends React.Component {
                 closeIcon
                 onClose={this.props.handleClose}
                 open={this.props.modalOpen}
-                className="modal"
-            >
+                className="modal">
                 <Modal.Header style={this.style}> 
                     <Header 
                         textAlign="center"
@@ -40,7 +36,6 @@ class HeroModal extends React.Component {
                         size='medium' 
                         verticalAlign='middle'
                         style={{margin:'0 auto'}}
-
                     />
 
                     <Modal.Description>

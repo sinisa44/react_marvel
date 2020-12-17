@@ -6,16 +6,16 @@ const ModalLinks = (props) => {
     
     return(
         props.links.map( link => {
-            return <Button basic color='red'>
-                    <Icon name='star'/> 
-                    <b>
-                        <a href={link.url} 
-                            style={{color:'red'}} 
-                            target='_blank' 
-                            rel="noreferrer"> { link.type.toUpperCase()
-                        }</a>
-                    </b>
-                </Button>
+            return <Button basic color='red' key={link.type}>
+                        <Icon name='star'/> 
+                        <b>
+                            <a href={link.url} 
+                                style={{color:'red'}} 
+                                target='_blank' 
+                                rel="noreferrer"> { link.type.toUpperCase()
+                            }</a>
+                        </b>
+                    </Button>
         })
     )
 }

@@ -9,7 +9,11 @@ class Character extends React.Component {
             this.props.loading ? <Spinner/> : 
             <Card.Group itemsPerRow={4}>   
                 {this.props.characters.map( character => {
-                    return <CharacterCard key={character.id} character={character}/>
+                    return <CharacterCard 
+                                key={character.id} 
+                                character={character} 
+                                handleItemClick={this.props.handleItemClick}    
+                            />
                 })}
             </Card.Group>   
             
