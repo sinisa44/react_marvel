@@ -16,7 +16,7 @@ const setOffset = offset => {
     return offset;
 }
 
-const generateUrl = () => {
+export const generateUrl = () => {
     const { publicKey, privateKey } = config;
 
     let timestamp = new Date().getTime();

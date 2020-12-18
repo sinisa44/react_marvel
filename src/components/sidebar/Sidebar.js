@@ -9,14 +9,14 @@ export default class Sidebar extends React.Component {
     render() {
         return(   
             <div>
-            <div>
-            { this.props.loading ? <Spinner/>:
-                <ListComponent 
-                    characters={this.props.characters}
-                    handleItemClick={this.props.handleItemClick}
-                />
-            }
-            </div>
+                <div>
+                    { this.props.loading ? <Spinner/>:
+                        <ListComponent 
+                            characters={this.props.characters}
+                            handleItemClick={this.props.handleItemClick}
+                        />
+                    }
+                </div>
                 <Paginate handlePageChange={this.props.handleChange}/>             
             </div>
         )

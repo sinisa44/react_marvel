@@ -6,6 +6,7 @@ import Sidebar from './sidebar/Sidebar';
 import HeroModal from './ui_components/Modal';
 import './App.scss'
 
+
 class App extends React.Component {
     state = {
         characters:[],
@@ -37,8 +38,7 @@ class App extends React.Component {
     }
 
     handleItemClick = data => {
-        console.log(data);
-        marvelGet(`/characters/${data}`, ( character ) =>{
+        marvelGet(`/characters/${data}`,  character => {
             this.setState({
                 character,
                 loading:false,
@@ -48,8 +48,9 @@ class App extends React.Component {
     }
 
     render() {
+        console.log(this.state.character)
         return(
-            <Container fluid>
+            <Container fluid> 
                 <Grid style={{padding:0, margin:0}}>
                 <HeroModal 
                     modalOpen={this.state.modalOpen}
